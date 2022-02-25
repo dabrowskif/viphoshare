@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   ListItem, ListItemButton, ListItemIcon, ListItemText,
@@ -21,9 +22,13 @@ function MenuItem(props: { name: string }): JSX.Element {
   };
 
   return (
-    <ListItem disablePadding>
+    <ListItem
+      disablePadding
+      component={Link}
+      to={`${name}`}
+    >
       <ListItemButton>
-        <ListItemIcon sx={{ color: '#FFFFFF' }}>
+        <ListItemIcon>
           {getIcon()}
         </ListItemIcon>
         <ListItemText

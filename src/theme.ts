@@ -1,13 +1,24 @@
-import { createTheme } from '@mui/material';
+import { createTheme, Theme } from '@mui/material';
 
-export const PRIMARY_LIGHT = '#f0f2f5';
-export const PRIMARY_MAIN = '#297EBF';
-export const PRIMARY_DARK = '#022E51';
-export const PRIMARY_CONTRAST = '#FFFFFF';
+// const PRIMARY_LIGHT = 'rgb(82, 82, 82)';
+// const PRIMARY_MAIN = 'rgb(50, 50, 50)';
+// const PRIMARY_DARK = 'rgb(0, 0, 0)';
+// const PRIMARY_CONTRAST = 'rgb(255, 255, 255)';
 
-export const SECONDARY_MAIN = '#B74803';
+const PRIMARY_LIGHT = 'rgb(82, 82, 82)';
+const PRIMARY_MAIN = 'rgb(50, 50, 50)';
+const PRIMARY_DARK = 'rgb(0, 0, 0)';
+const PRIMARY_CONTRAST = 'rgb(255, 255, 255)';
 
-const theme = createTheme({
+const SECONDARY_LIGHT = 'rgb(255, 0, 0)';
+const SECONDARY_MAIN = 'rgb(255, 0, 0)';
+const SECONDARY_DARK = 'rgb(83, 21, 22)';
+
+declare module '@mui/styles/defaultTheme' {
+  interface DefaultTheme extends Theme { }
+}
+
+const theme = {
   palette: {
     text: {
       primary: PRIMARY_CONTRAST,
@@ -16,14 +27,38 @@ const theme = createTheme({
       light: PRIMARY_LIGHT,
       main: PRIMARY_MAIN,
       dark: PRIMARY_DARK,
-      contrastText: PRIMARY_CONTRAST,
     },
     secondary: {
+      light: SECONDARY_LIGHT,
       main: SECONDARY_MAIN,
+      dark: SECONDARY_DARK,
     },
   },
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: PRIMARY_CONTRAST,
+        },
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          color: PRIMARY_CONTRAST,
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: PRIMARY_LIGHT,
+          },
+        },
+      },
+    },
   },
-});
+};
 
-export default theme;
+export default createTheme(theme);

@@ -1,19 +1,18 @@
+import { AnyAction } from 'redux';
 import { SIGNUP, LOGOUT, SIGNIN } from '../constants/actionTypes';
-import { Action } from './index';
 
-const user = (state = { authenticationData: null }, action: Action) => {
+type InitialState = { authenticationData: null };
+
+const user = (state: InitialState = { authenticationData: null }, action: AnyAction): InitialState => {
   switch (action.type) {
     case SIGNIN:
-      console.log(action.payload);
       return state;
     case SIGNUP:
-      console.log(action.payload);
       return state;
     case LOGOUT:
-      console.log(action.payload);
       return state;
     default:
-      throw new Error();
+      return state;
   }
 };
 

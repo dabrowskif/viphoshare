@@ -1,7 +1,7 @@
 import { makeStyles } from '@mui/styles';
-import { PRIMARY_DARK } from '../../theme';
+import { LEFT_NAVBAR_WIDTH } from '../../constants/style';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   brandContainer: {
     marginLeft: '-15px',
     display: 'flex',
@@ -13,15 +13,13 @@ export default makeStyles(() => ({
     color: '#FFFFFF',
     textSize: '50px',
   },
-  brandTitle: {
-  },
   drawer: {
-    width: '200px',
+    width: LEFT_NAVBAR_WIDTH,
     flexShrink: 0,
     '& .MuiDrawer-paper': {
-      backgroundColor: PRIMARY_DARK,
-      width: '200px',
       boxSizing: 'border-box',
+      backgroundColor: theme.palette.primary.main,
+      width: LEFT_NAVBAR_WIDTH,
     },
   },
 }));

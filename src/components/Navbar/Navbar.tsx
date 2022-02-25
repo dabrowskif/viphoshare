@@ -22,7 +22,7 @@ function Navbar(): JSX.Element {
         <IconButton>
           <ScreenShareIcon className={classes.brandIcon} />
         </IconButton>
-        <Typography className={classes.brandTitle}>
+        <Typography>
           Viphoshare
         </Typography>
       </div>
