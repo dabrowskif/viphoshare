@@ -58,6 +58,22 @@ const theme = {
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          backgroundColor: PRIMARY_MAIN,
+          border: `1px solid ${SECONDARY_MAIN}`,
+          color: 'white',
+          margin: '0 15px',
+          '&:hover': {
+            boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+            transition: 'background-color 0.5s, box-shadow 0.3s',
+            border: `1px solid ${SECONDARY_MAIN}`,
+            background: SECONDARY_DARK,
+          },
+        },
+      },
+    },
   },
 };
 

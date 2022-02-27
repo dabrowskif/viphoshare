@@ -1,0 +1,2 @@
+PORT = 5000
+CONNECTION_URL = "mongodb+srv://<nickname>:<password>@abc.def.ghi" // your MongoDB link

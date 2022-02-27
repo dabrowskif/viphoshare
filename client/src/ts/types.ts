@@ -8,3 +8,8 @@ export type UserSignInData = {
     email: string,
     password: string,
 }
+
+export type CustomVideo = {
+    source: File,
+    url: string,
+}

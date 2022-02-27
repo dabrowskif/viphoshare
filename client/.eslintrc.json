@@ -56,7 +56,7 @@
     "max-len": [
       "warn",
       {
-        "code": 80
+        "code": 120
       }
     ],
     "react-hooks/rules-of-hooks": "error",
@@ -64,7 +64,9 @@
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-empty-interface": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "@typescript-eslint/ban-ts-comment": "warn"
   },
   "settings": {
     "import/resolver": {
