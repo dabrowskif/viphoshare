@@ -42,19 +42,22 @@ const theme = {
         },
       },
     },
-    MuiSvgIcon: {
-      styleOverrides: {
-        root: {
-          color: PRIMARY_CONTRAST,
-        },
-      },
-    },
     MuiListItemButton: {
       styleOverrides: {
         root: {
+          color: PRIMARY_CONTRAST,
           '&:hover': {
             backgroundColor: PRIMARY_LIGHT,
+            color: SECONDARY_MAIN,
+            transition: 'color 0.1s, background-color 0.3s',
           },
+        },
+      },
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          color: 'inherit',
         },
       },
     },

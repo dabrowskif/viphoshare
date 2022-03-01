@@ -11,6 +11,10 @@ export default makeStyles((theme) => ({
   },
   brandIcon: {
     color: '#FFFFFF',
+    '&:hover': {
+      color: theme.palette.secondary.main,
+      transition: 'color 0.3s',
+    },
     textSize: '50px',
   },
   drawer: {

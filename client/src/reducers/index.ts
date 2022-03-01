@@ -3,10 +3,14 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import user from './user';
+import files from './files';
 
 const rootReducer = combineReducers({
-  user,
+  files,
 });
 
-export default createStore(rootReducer, compose(applyMiddleware(thunk)));
+const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export default store;

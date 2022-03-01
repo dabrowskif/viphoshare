@@ -1,27 +1,29 @@
 import React, {
-  ChangeEvent, useRef, useState,
+  ChangeEvent, useEffect, useRef, useState,
 } from 'react';
 import {
   Button, Grid, Grow, Typography,
 } from '@mui/material';
 /* @ts-ignore */
 import { Player } from 'video-react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useStyles from './styles';
-import { CustomVideo } from '../../../ts/types';
+import { CustomFile } from '../../../ts/types';
+import { uploadFile } from '../../../actions/files';
+import { RootState } from '../../../reducers';
 
 function Upload(): JSX.Element {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const [file, setFile] = useState<CustomVideo | undefined>();
+  const lastUploadedVideoURL = useSelector((state: RootState) => state?.files?.lastUploadedFileURL);
 
   const handleFileChange = (event: ChangeEvent): void => {
     const target = event.target as HTMLInputElement;
     const newFile: File = (target.files as FileList)[0];
-
-    console.log(newFile);
-
-    setFile({ ...file, source: newFile, url: URL.createObjectURL(newFile) });
+    dispatch(uploadFile({ source: newFile, url: URL.createObjectURL(newFile) }));
   };
 
   const handleFileChoose = (): void => {
@@ -34,7 +36,7 @@ function Upload(): JSX.Element {
         <Grid item xs={12} sx={{ marginBottom: '40px' }}>
           <Typography variant="h3">Upload video or photo</Typography>
         </Grid>
-        {!file
+        {!lastUploadedVideoURL
           && (
             <Grid item xs={12} className={classes.resourceUpload}>
               <Typography variant="h5">Drop your file here!</Typography>
@@ -56,7 +58,7 @@ function Upload(): JSX.Element {
           )}
         <Grid item xs={12}>
           {
-            file?.source
+            lastUploadedVideoURL
             && (
               <>
                 {/* <video
@@ -68,7 +70,7 @@ function Upload(): JSX.Element {
                 <Player
                   className={classes.videoPlayer}
                   playsInline
-                  src={file?.url}
+                  src={lastUploadedVideoURL}
                 />
               </>
             )

@@ -4,15 +4,16 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-// import userRoutes from './routes/user.js';
+import fileRoutes from './routes/files';
 
 const app = express();
 dotenv.config();
 
+// app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true, parameterLimit: 50000 }));
+app.use(bodyParser.json());
 app.use(cors());
 
-// app.use('/user', userRoutes);
-// app.use('/videos', videosRoutes);
+app.use('/files', fileRoutes);
 
 const PORT = process.env.PORT || 5000;
 

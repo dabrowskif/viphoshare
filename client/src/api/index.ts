@@ -1,7 +1,13 @@
-import axios from 'axios';
-import { UserSignUpData, UserSignInData } from '../ts/types';
+import axios, { AxiosResponse } from 'axios';
 
-const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
+import { CustomFile } from '../ts/types';
 
-export const signin = (formData: UserSignInData) => API.post('/user/signin', formData);
-export const signup = (formData: UserSignUpData) => API.post('/user/signup', formData);
+// const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
+
+export const uploadFile = (file: CustomFile): Promise<AxiosResponse> => {
+  const customFileFormData = new FormData();
+  customFileFormData.append('file', file.source);
+
+  return API.post('/files/upload', customFileFormData, { headers: { 'Content-Type': 'multipart/form-data' } });
+};
